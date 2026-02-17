@@ -1,0 +1,80 @@
+@baseUrl = http://localhost:9000
+@contentType = application/json
+@email = bomesi1406@advarm.com
+@password = password
+@authToken = {{login.response.body.jwtToken}}
+
+### Signup
+# @name signup
+POST {{baseUrl}}/api/auth/signup
+Content-Type: {{contentType}}
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}",
+    "firstName": "Bomesi",
+    "lastName": "User"
+}
+
+### Login
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+### Create Poll
+# @name createPoll
+POST {{baseUrl}}/api/user/poll
+Authorization: Bearer {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "question": "Which programming language do you prefer?",
+    "options": ["Java", "Python", "JavaScript", "C++"],
+    "expiredAt": "2026-12-31T23:59:59.000+00:00"
+}
+
+### Get All Polls
+GET {{baseUrl}}/api/user/polls
+Authorization: Bearer {{authToken}}
+
+### Get My Polls
+GET {{baseUrl}}/api/user/my-polls
+Authorization: Bearer {{authToken}}
+
+### Get Poll By Id
+@pollId = {{createPoll.response.body.id}}
+GET {{baseUrl}}/api/user/poll/{{pollId}}
+Authorization: Bearer {{authToken}}
+
+### Vote on Poll
+POST {{baseUrl}}/api/user/poll/vote
+Authorization: Bearer {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pollId": {{pollId}},
+    "optionId": {{createPoll.response.body.optionsDTOS[0].id}}
+}
+
+### Comment on Poll
+POST {{baseUrl}}/api/user/poll/comment
+Authorization: Bearer {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pollId": {{pollId}},
+    "content": "This is a test comment"
+}
+
+### Like Poll
+POST {{baseUrl}}/api/user/poll/like/{{pollId}}
+Authorization: Bearer {{authToken}}
+
+### Delete Poll
+DELETE {{baseUrl}}/api/user/poll/{{pollId}}
+Authorization: Bearer {{authToken}}

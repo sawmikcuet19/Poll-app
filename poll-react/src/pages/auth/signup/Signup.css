@@ -1,0 +1,26 @@
+.signup-card-fixed {
+    max-width: 450px !important;
+    width: 100% !important;
+    margin: 0 auto;
+}
+
+.signup-grid-alignment {
+    width: 100%;
+    margin: 0 !important;
+    /* Fix negative margin of Grid */
+}
+
+/* Ensure the full-width items align perfectly with side-by-side items */
+.signup-grid-alignment .MuiGrid-item {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 16px !important;
+}
+
+.auth-container-centered {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
