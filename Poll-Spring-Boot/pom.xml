@@ -18,7 +18,15 @@
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>sawmikcuet19</id>
+			<name>Sawmik Kumar Paul</name>
+			<email>sawmik.paul@gmail.com</email>
+			<organization>Department of CSE, Chittagong University of Engineering and Technology (CUET)</organization>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>
